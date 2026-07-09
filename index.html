@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stel je eigen carnavalsjas samen bij Haakhuis Naai Atelier: combineer kraag, mouwen, middenstuk en zoom van drie jassen en bekijk het in 360°.">
+  <meta property="og:title" content="Haakhuis · Carnaval-configurator (prototype)">
+  <meta property="og:description" content="Stel je eigen carnavalsjas samen — echte kledingstukken, wisselbare onderdelen, 360° weergave.">
+  <meta property="og:image" content="assets/img/haakhuis-logo.png">
+  <title>Haakhuis Carnaval Atelier — prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared/haakhuis.css">
+  <style>
+    .hero {
+      max-width: 980px; margin: 0 auto; padding: 64px 26px 30px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block; background: #fff; border: 1px solid var(--hh-line);
+      border-radius: 999px; padding: 7px 16px; font-family: var(--font-head);
+      font-weight: 600; font-size: 12.5px; color: var(--hh-ink-soft); margin-bottom: 22px;
+    }
+    .hero h1 { font-size: clamp(30px, 5vw, 52px); font-weight: 800; letter-spacing: -.02em; }
+    .hero h1 em { font-style: normal; color: var(--hh-magenta); }
+    .hero p.lead { max-width: 620px; margin: 18px auto 0; color: var(--hh-ink-soft); font-size: 16.5px; }
+    .cards {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+      max-width: 980px; margin: 44px auto 30px; padding: 0 26px;
+    }
+    .variant {
+      background: #fff; border-radius: var(--hh-radius); box-shadow: var(--hh-shadow);
+      padding: 30px 28px; text-align: left; text-decoration: none; color: var(--hh-ink);
+      border: 2px solid transparent; transition: all .18s ease; position: relative; overflow: hidden;
+    }
+    .variant:hover { transform: translateY(-4px); border-color: var(--hh-rose); }
+    .variant .lvl {
+      font-family: var(--font-head); font-weight: 700; font-size: 12px;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--hh-blue-deep);
+    }
+    .variant h2 { font-size: 23px; margin: 8px 0 10px; }
+    .variant p { color: var(--hh-ink-soft); font-size: 14px; min-height: 66px; }
+    .variant ul { list-style: none; margin: 14px 0 22px; font-size: 13.5px; }
+    .variant li { padding: 4px 0 4px 26px; position: relative; }
+    .variant li::before { content: '✓'; position: absolute; left: 4px; color: var(--hh-magenta); font-weight: 700; }
+    .variant .ico-big { position: absolute; right: 18px; top: 16px; font-size: 40px; opacity: .5; }
+    .foot {
+      text-align: center; color: var(--hh-ink-soft); font-size: 12.5px;
+      padding: 26px; border-top: 1px solid var(--hh-line); margin-top: 40px;
+    }
+    @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="hh-header">
+    <a class="hh-logo" href="index.html">
+      <img class="hh-logo-img" src="assets/img/haakhuis-logo.png" alt="Haakhuis.nl logo">
+      <span>
+        <span class="hh-logo-name">haakhuis</span><br>
+        <span class="hh-logo-sub">Naai Atelier — stel je eigen pak samen</span>
+      </span>
+    </a>
+    <div class="hh-header-right">
+      <a class="hh-chip" href="niveau1.html">Niveau 1</a>
+      <a class="hh-chip" href="niveau2.html">Niveau 2</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="badge">✨ Prototype · twee varianten om te vergelijken</span>
+    <h1>Stel je eigen <em>carnavalsjas</em> samen</h1>
+    <p class="lead">Kies een model, combineer kraag, mouwen, middenstuk en zoom van drie échte
+      carnavalsjassen, kies je kleurtint en bekijk het resultaat van alle kanten — draaibaar in 360°.
+      Handgemaakt door Haakhuis, samengesteld door jou.</p>
+  </section>
+
+  <section class="cards">
+    <a class="variant" href="niveau1.html">
+      <span class="ico-big">✋</span>
+      <span class="lvl">Niveau 1</span>
+      <h2>Zelf plaatsen</h2>
+      <p>De onderdelen worden op het model gelegd en jij bepaalt de exacte plek:
+         verslepen, groter of kleiner maken en draaien — direct in de browser.</p>
+      <ul>
+        <li>3 échte kledingstukken (fotorealistisch)</li>
+        <li>Kraag, mouwen, middenstuk &amp; zoom wisselbaar</li>
+        <li>6 modellen · 360° rotatie · kleurtinten</li>
+        <li>Live prijsindicatie &amp; ontwerp downloaden</li>
+      </ul>
+      <span class="hh-btn">Open niveau 1 →</span>
+    </a>
+
+    <a class="variant" href="niveau2.html">
+      <span class="ico-big">🤖</span>
+      <span class="lvl">Niveau 2</span>
+      <h2>Automatische pasvorm (AI)</h2>
+      <p>Pose-detectie (MediaPipe) vindt 33 lichaamspunten op de foto en plaatst
+         de kleding automatisch op maat — op elk model, in elke draaihoek.</p>
+      <ul>
+        <li>Alles van niveau 1, plus:</li>
+        <li>AI-pose-detectie in de browser</li>
+        <li>Automatische plaatsing per lichaamsbouw</li>
+        <li>Lichaamspunten zichtbaar te maken (demo)</li>
+      </ul>
+      <span class="hh-btn rose">Open niveau 2 →</span>
+    </a>
+  </section>
+
+  <footer class="foot">
+    Prototype voor Haakhuis, Landgraaf · gemaakt door IBE MOTION · modellen &amp; kleding zijn illustratief
+  </footer>
+
+</body>
+</html>

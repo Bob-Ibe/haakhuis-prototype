@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Haakhuis configurator niveau 1: plaats de onderdelen zelf — slepen, schalen en combineren in de browser.">
+  <meta property="og:title" content="Haakhuis · Carnaval-configurator (prototype)">
+  <meta property="og:description" content="Stel je eigen carnavalsjas samen — echte kledingstukken, wisselbare onderdelen, 360° weergave.">
+  <meta property="og:image" content="assets/img/haakhuis-logo.png">
+  <title>Niveau 1 · Zelf plaatsen — Haakhuis Carnaval Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preload" as="image" href="assets/models/raw-vrouw.jpg">
+  <link rel="stylesheet" href="shared/haakhuis.css">
+</head>
+<body>
+
+  <header class="hh-header">
+    <a class="hh-logo" href="index.html">
+      <img class="hh-logo-img" src="assets/img/haakhuis-logo.png" alt="Haakhuis.nl logo">
+      <span>
+        <span class="hh-logo-name">haakhuis</span><br>
+        <span class="hh-logo-sub">Naai Atelier — stel je eigen pak samen</span>
+      </span>
+    </a>
+    <div class="hh-header-right">
+      <a class="hh-chip active" href="niveau1.html">Niveau 1 · Zelf plaatsen</a>
+      <a class="hh-chip" href="niveau2.html">Niveau 2 · Automatisch (AI)</a>
+    </div>
+  </header>
+
+  <main class="cfg-wrap">
+
+    <!-- links: model kiezen -->
+    <aside>
+      <section class="panel">
+        <h3><span class="num">1</span> Kies je model</h3>
+        <div class="model-grid" id="modelGrid"></div>
+      </section>
+    </aside>
+
+    <!-- midden: stage -->
+    <section class="panel stage-panel">
+      <div class="stage-outer">
+        <div class="stage" id="stage">
+          <span class="deg-360">↻ 360°</span>
+          <canvas class="model-layer" id="modelLayer"></canvas>
+          <svg class="garment-layer" id="garmentLayer"></svg>
+          <div class="stage-hint" id="stageHint">Tip: klik op een onderdeel om het te verslepen of te schalen</div>
+          <div class="stage-loading" id="stageLoading"><div><div class="spinner"></div>Modellen laden…</div></div>
+        </div>
+        <div class="rotate-bar">
+          <button class="rot-btn" id="rotL" title="Draai naar links">←</button>
+          <div class="rot-dots" id="rotDots"></div>
+          <button class="rot-btn" id="rotR" title="Draai naar rechts">→</button>
+        </div>
+        <div class="rot-label" id="rotLabel"></div>
+      </div>
+    </section>
+
+    <!-- rechts: jas, onderdelen, prijs -->
+    <aside>
+      <section class="panel">
+        <h3><span class="num">2</span> Kies je jas</h3>
+        <div class="preset-row garments" id="presetRow"></div>
+      </section>
+
+      <section class="panel">
+        <h3><span class="num">3</span> Wissel de onderdelen</h3>
+        <p class="panel-intro">Combineer kraag, mouwen, middenstuk en zoom van de drie jassen — en kies per onderdeel een kleurtint.</p>
+        <div id="slotList"></div>
+      </section>
+
+      <section class="panel tune-box" id="tuneBox">
+        <h3>✋ Fijnafstelling <span style="text-transform:none;letter-spacing:0;font-weight:400">— <span class="tune-part">klik op een onderdeel</span></span></h3>
+        <div class="tune-row"><label>Grootte</label><input type="range" data-t="s" min="0.55" max="1.8" step="0.01" value="1"></div>
+        <button class="hh-btn ghost" id="btnReset" style="width:100%;margin-top:6px">↺ Alles terugzetten</button>
+        <div class="tune-note">Niveau 1: jij plaatst de onderdelen zelf — versleep ze op het model of gebruik de schuif. De plaatsing wordt per kijkrichting onthouden.</div>
+      </section>
+
+      <section class="panel price-panel">
+        <h3><span class="num">4</span> Prijsindicatie</h3>
+        <div class="price-lines" id="priceLines"></div>
+        <div class="price-total">
+          <span class="lbl">Totaal</span>
+          <span class="amt" id="priceTotal"></span>
+        </div>
+        <button class="hh-btn rose" id="btnDownload" style="width:100%">⬇ Ontwerp opslaan als afbeelding</button>
+      </section>
+    </aside>
+
+  </main>
+
+  <script src="shared/calibration.js"></script>
+  <script src="shared/data.js"></script>
+  <script src="shared/engine.js"></script>
+  <script>Engine.init({ manual: true });</script>
+</body>
+</html>
